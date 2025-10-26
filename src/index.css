@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Custom animations for RegisterPage */
+
+
+.card-small {
+  width: 180px;
+  height: 230px;
+}
