@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import barberService from "../../services/barberService";
+import barberService from "../../Auth/Barbers/BarberDetail.jsx";
 
 const BarberDetail = () => {
   const { id } = useParams(); // salonId from URL
@@ -29,27 +29,29 @@ const BarberDetail = () => {
         className="w-full h-64 object-cover rounded-lg mb-4"
       />
       <p className="text-lg mb-2">📍 Address: {salon.address}</p>
-      <p className="text-lg mb-4">🧭 Distance: {salon.distance.toFixed(2)} km</p>
+      <p className="text-lg mb-4">
+        🧭 Distance: {(Number(salon.distance) || 0).toFixed(2)} km
+      </p>
 
       <h3 className="text-2xl font-semibold mb-2">Barbers List</h3>
       <table className="min-w-full border border-gray-300">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="border p-2">Barber ID</th>
-            <th className="border p-2">Name</th>
-            <th className="border p-2">Phone</th>
-            <th className="border p-2">Email</th>
-          </tr>
-        </thead>
         <tbody>
-          {salon.barbers.map((barber) => (
-            <tr key={barber.barberId}>
-              <td className="border p-2">{barber.barberId}</td>
-              <td className="border p-2">{barber.barberName}</td>
-              <td className="border p-2">{barber.phone}</td>
-              <td className="border p-2">{barber.email}</td>
+          {salon.barbers?.length > 0 ? (
+            salon.barbers.map((barber) => (
+              <tr key={barber.barberId}>
+                <td className="border p-2">{barber.barberId}</td>
+                <td className="border p-2">{barber.barberName}</td>
+                <td className="border p-2">{barber.phone}</td>
+                <td className="border p-2">{barber.email}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td className="border p-2 text-center" colSpan="4">
+                No barbers found
+              </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

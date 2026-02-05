@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { VirtuosoGrid } from "react-virtuoso";
-import barberService from "../../services/barberService";
+import barberService from "../../../services/barberService";
 import { useNavigate } from "react-router-dom";
 
 const BarberGridWithSidebar = () => {
@@ -10,13 +10,13 @@ const BarberGridWithSidebar = () => {
   useEffect(() => {
     const fetchBarbers = async () => {
       const response = await barberService.getNearbySalons();
+      console.log("Fetched barbers:", response);
       setBarbers(response || []);
     };
     fetchBarbers();
   }, []);
 
   const BarberCard = ({ barber }) => (
-    
 
 
     <div className="border p-4 rounded-lg shadow bg-white">

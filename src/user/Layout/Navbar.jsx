@@ -12,7 +12,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="flex justify-between items-center p-6 bg-white shadow-lg border-b border-gray-100 ml-64 sticky top-0 z-50">
+    <header className="flex justify-between  items-center p-6 bg-white shadow-lg border-b border-gray-100 ml-64 sticky top-0 z-50">
       {/* Search Section */}
       <div className="flex-1 max-w-2xl">
         <div className="relative">
